@@ -7,6 +7,8 @@ from spade.message import Message
 from spade.template import Template
 from spade import quit_spade
 XMPP_server = "127.0.0.1"
+Agent_prefix = "agent"
+
 class MyAgent(Agent):
     #extending Agent constructor to define MyAgent neighbours in graph
     #super returns a proxy parent object
@@ -123,25 +125,25 @@ class MyAgent(Agent):
         
     
 graph = [
-        [f"agent{i}" for i in [1, 2, 4, 3, 17]],
-        [f"agent{i}" for i in [0, 18]],       
-        [f"agent{i}" for i in [0, 6]],
-        [f"agent{i}" for i in [0, 17]],
-        [f"agent{i}" for i in [0, 5, 9]],
-        [f"agent{i}" for i in [4]],
-        [f"agent{i}" for i in [2, 7]],
-        [f"agent{i}" for i in [6, 9, 8]],
-        [f"agent{i}" for i in [7]],
-        [f"agent{i}" for i in [4, 7, 10]], 
-        [f"agent{i}" for i in [9, 11]],
-        [f"agent{i}" for i in [10]],
-        [f"agent{i}" for i in [3, 13, 14]],
-        [f"agent{i}" for i in [12]],
-        [f"agent{i}" for i in [12, 15, 17]],
-        [f"agent{i}" for i in [14, 17]],
-        [f"agent{i}" for i in [17]],
-        [f"agent{i}" for i in [14, 15,0, 16, 18]],
-        [f"agent{i}" for i in [17, 1]],
+        [f"{Agent_prefix}{i}" for i in [1, 2, 4, 3, 17]],
+        [f"{Agent_prefix}{i}" for i in [0, 18]],       
+        [f"{Agent_prefix}{i}" for i in [0, 6]],
+        [f"{Agent_prefix}{i}" for i in [0, 17]],
+        [f"{Agent_prefix}{i}" for i in [0, 5, 9]],
+        [f"{Agent_prefix}{i}" for i in [4]],
+        [f"{Agent_prefix}{i}" for i in [2, 7]],
+        [f"{Agent_prefix}{i}" for i in [6, 9, 8]],
+        [f"{Agent_prefix}{i}" for i in [7]],
+        [f"{Agent_prefix}{i}" for i in [4, 7, 10]], 
+        [f"{Agent_prefix}{i}" for i in [9, 11]],
+        [f"{Agent_prefix}{i}" for i in [10]],
+        [f"{Agent_prefix}{i}" for i in [3, 13, 14]],
+        [f"{Agent_prefix}{i}" for i in [12]],
+        [f"{Agent_prefix}{i}" for i in [12, 15, 17]],
+        [f"{Agent_prefix}{i}" for i in [14, 17]],
+        [f"{Agent_prefix}{i}" for i in [17]],
+        [f"{Agent_prefix}{i}" for i in [14, 15,0, 16, 18]],
+        [f"{Agent_prefix}{i}" for i in [17, 1]],
         ]
 
 if __name__ == "__main__":
@@ -149,10 +151,10 @@ if __name__ == "__main__":
     for i in range(1, len(graph)):
         val = randint(0, 1000)
         s += val
-        MyAgent(graph[i], False, val, f"agent{i}@{XMPP_server}", "mypass", verify_security=False).start().result()
+        MyAgent(graph[i], False, val, f"{Agent_prefix}{i}@{XMPP_server}", "mypass", verify_security=False).start().result()
     
     print(f"True average value is {s/len(graph)}")
-    leader = MyAgent(graph[0], True, 0, f"agent{0}@{XMPP_server}", "mypass", verify_security=False)
+    leader = MyAgent(graph[0], True, 0, f"{Agent_prefix}{0}@{XMPP_server}", "mypass", verify_security=False)
     leader.start().result()
     
     while leader.is_alive():
