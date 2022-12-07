@@ -2,4 +2,4 @@
 
 export TZ=Europe/Moscow
 
-python main.py
+python $1
