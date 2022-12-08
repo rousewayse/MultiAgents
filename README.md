@@ -10,6 +10,11 @@ Homeworks for Multiagents course
 ```
 * Python version is $3.8.12$
 * Prosody is used as XMPP server with self-signed certs
+## How to generate certs:
+```
+prosodyctl cert generate $YOUR_ADRESS$ #as root then just hit Enter
+cp /var/lib/prosody/$YOUR_ADRESS$.{key, crt, cnf} /etc/prosody/certs #as root
+```
 ## Prosody config file
 ```
 daemonize = true
