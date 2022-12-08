@@ -10,6 +10,23 @@ Homeworks for Multiagents course
 ```
 * Python version is $3.8.12$
 * Prosody is used as XMPP server with self-signed certs
+## Setting up an virtual enironment
+* Getting certain Python version:
+```
+pyenv install 3.8.12
+```
+* Creating:
+```
+python3.8 -m venv venv
+```
+* Activating:
+```
+source venv/bin/activate
+```
+* Deactivating:
+```
+deactivate #or venv/bin/deactivate
+```
 ## How to generate certs:
 ```
 prosodyctl cert generate $YOUR_ADRESS$ #as root then just hit Enter
